@@ -31,9 +31,17 @@ Route::get('/auth/callback', function () {
  
     Auth::login($user);
  
-    return redirect('/dashboard');
+    return redirect('dashboard');
 });
 
 Route::get('/', function () {
-    return Socialite::driver('google')->redirect();
+    return Socialite::driver('google')->user();
+});
+
+Route::get('/dashboard', function () {
+    $user = Auth::user();
+    if($user)
+        return view("dashboard", compact('user'));
+    else
+        return "faild";
 });
