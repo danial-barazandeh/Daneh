@@ -35,7 +35,7 @@ Route::get('/auth/callback', function () {
 });
 
 Route::get('/', function () {
-    return Socialite::driver('google')->user();
+    return view("home");
 });
 
 Route::get('/dashboard', function () {
@@ -43,5 +43,5 @@ Route::get('/dashboard', function () {
     if($user)
         return view("dashboard", compact('user'));
     else
-        return "faild";
+        return Socialite::driver('google')->redirect();
 });
