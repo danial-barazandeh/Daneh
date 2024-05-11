@@ -7,4 +7,18 @@ export default {
         './resources/views/**/*.blade.php',
         './vendor/filament/**/*.blade.php',
     ],
+    theme: {
+        extend: {
+          fontFamily: { 
+            'franklin': ['Libre Franklin', 'sans-serif'],
+          },
+          colors:{
+            primary: "#00D5FF",
+            secondary: "#25EFD2",
+            background: "#F8FAFA",
+            tcolor: "#2E2F3A",
+            purple: "#8E77D1"
+          },
+        },
+      },
 }

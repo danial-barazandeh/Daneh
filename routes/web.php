@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
@@ -35,7 +36,8 @@ Route::get('/auth/callback', function () {
 });
 
 Route::get('/', function () {
-    return view("home");
+    $posts = Post::with('image')->with('user')->get();
+    return view("home", compact('posts'));
 });
 
 Route::get('/dashboard', function () {

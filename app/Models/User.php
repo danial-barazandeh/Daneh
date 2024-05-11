@@ -25,6 +25,7 @@ class User extends Authenticatable
         'role',
         'google_id',
         'google_token',
+        'password',
     ];
 
     /**
@@ -34,6 +35,11 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'remember_token',
+        'password'
+    ];
+
+    protected $casts = [
+        'password' => 'hashed',
     ];
 
 }
