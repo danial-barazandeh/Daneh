@@ -6,32 +6,29 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Post extends Model
+class Product extends Model
 {
     use HasFactory;
     use SoftDeletes;
-
-    protected $table = 'posts';
+    
+    protected $table = 'products';
 
     protected $fillable = [
         'title',
         'content',
-        'seo_title',
-        'seo_description',
-        'seo_keys',
+        'seoTitle',
+        'seoDescription',
+        'seoKeys',
         'published',
         'user_id',
         'image_id',
-        'deleted_at',
+        'price',
+        'salePrice',
+        'free',
+        'time',
+        'introUrl',
+        'deleted_at'
     ];
-
-    protected $casts = [
-        'seo_keys' => 'json',
-    ];
-    // public function image(): HasOne
-    // {
-    //     return $this->hasOne(Image::class);
-    // }
 
     public function user()
     {
@@ -41,4 +38,5 @@ class Post extends Model
     {
         return $this->belongsTo(Image::class);
     }
+    
 }

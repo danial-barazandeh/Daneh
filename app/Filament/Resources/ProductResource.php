@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PostResource\Pages;
-use App\Filament\Resources\PostResource\RelationManagers;
-use App\Models\Post;
+use App\Filament\Resources\ProductResource\Pages;
+use App\Filament\Resources\ProductResource\RelationManagers;
+use App\Models\Product;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class PostResource extends Resource
+class ProductResource extends Resource
 {
-    protected static ?string $model = Post::class;
+    protected static ?string $model = Product::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -29,18 +29,27 @@ class PostResource extends Resource
                 Forms\Components\RichEditor::make('content')
                     ->maxLength(65535)
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('seo_title')
+                Forms\Components\TextInput::make('seoTitle')
                     ->maxLength(255),
-                Forms\Components\Textarea::make('seo_description')
-                    ->maxLength(65535)
-                    ->columnSpanFull(),
-                Forms\Components\TagsInput::make('seo_keys'),
+                Forms\Components\TextInput::make('seoDescription')
+                    ->maxLength(255),
+                Forms\Components\TagsInput::make('seoKeys'),
                 Forms\Components\Toggle::make('published')
                     ->required(),
                 Forms\Components\Select::make('user_id')
                     ->relationship('user', 'name'),
                 Forms\Components\Select::make('image_id')
                     ->relationship('image', 'title'),
+                Forms\Components\TextInput::make('price')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('salePrice')
+                    ->maxLength(255),
+                Forms\Components\Toggle::make('free'),
+                Forms\Components\TextInput::make('time')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('introUrl')
+                    ->maxLength(255),
             ]);
     }
 
@@ -50,20 +59,25 @@ class PostResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('seo_title')
+                Tables\Columns\TextColumn::make('seoTitle')
                     ->searchable(),
-                // Tables\Columns\TextColumn::make('seo_keys')
-                //     ->searchable(),
+                Tables\Columns\TextColumn::make('seoDescription')
+                    ->searchable(),
                 Tables\Columns\IconColumn::make('published')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('user_id')
+                    ->numeric()
                     ->sortable(),
-                // Tables\Columns\ImageColumn::make('image_id')
-                //     ->sortable(),
-                Tables\Columns\TextColumn::make('deleted_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('price')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('salePrice')
+                    ->searchable(),
+                Tables\Columns\IconColumn::make('free')
+                    ->boolean(),
+                Tables\Columns\TextColumn::make('time')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('introUrl')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -96,9 +110,9 @@ class PostResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPosts::route('/'),
-            'create' => Pages\CreatePost::route('/create'),
-            'edit' => Pages\EditPost::route('/{record}/edit'),
+            'index' => Pages\ListProducts::route('/'),
+            'create' => Pages\CreateProduct::route('/create'),
+            'edit' => Pages\EditProduct::route('/{record}/edit'),
         ];
     }
 }

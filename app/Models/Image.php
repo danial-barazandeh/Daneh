@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Product;
 
 class Image extends Model
 {
@@ -25,5 +26,9 @@ class Image extends Model
     public function posts()
     {
         return $this->belongsToMany(Post::class);
+    }
+    public function products()
+    {
+        return $this->belongsToMany(Product::class);
     }
 }

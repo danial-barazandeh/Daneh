@@ -47,3 +47,8 @@ Route::get('/dashboard', function () {
     else
         return Socialite::driver('google')->redirect();
 });
+
+Route::get('/post/{id}', function (string $id) {
+    $post = Post::find($id)->with('user')->first();
+    return view("post", compact('post'));
+});

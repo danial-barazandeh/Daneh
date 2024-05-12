@@ -19,6 +19,9 @@ export default {
             tcolor: "#2E2F3A",
             purple: "#8E77D1"
           },
+          backgroundImage: {
+            'cloud': 'url("http://127.0.0.1:8000/storage/clouds-cloud-svgrepo-com.svg")',
+          }
         },
       },
 }
