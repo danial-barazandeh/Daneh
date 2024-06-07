@@ -11,6 +11,7 @@ Daneh is a full-stack Laravel project that aims to provide a suitable online pla
 - Filament dashboard
 - Migration for database
 - Clean blade code
+- Tailwind styling
 
 
 # Blog
