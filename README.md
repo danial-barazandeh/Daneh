@@ -5,6 +5,14 @@ Daneh is a full-stack Laravel project that aims to provide a suitable online pla
 
 ![image description](readme/home.png)
 
+## Features
+
+- Google authentication
+- Filament dashboard
+- Migration for database
+- Clean blade code
+
+
 # Blog
 You could use the blog system to upload posts about anything you want to improve the SEO on your website. 
 
