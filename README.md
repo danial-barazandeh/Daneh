@@ -8,9 +8,14 @@ Daneh is a full-stack Laravel project that aims to provide a suitable online pla
 # Blog
 You could use the blog system to upload posts about anything you want to improve the SEO on your website. 
 
+![image description](readme/post.png)
+
 # Product
 You could sell tutorials on any subject you like, share the content as video, text, file or any other form you see fit.
+
+![image description](readme/product.png)
 
 # Admin Dashboard
 In the admin dashboard you could manage your posts, users, products and media that you have uploaded. 
 
+![image description](readme/dashboard.jpg)

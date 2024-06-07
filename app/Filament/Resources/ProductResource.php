@@ -63,15 +63,15 @@ class ProductResource extends Resource
                 //     ->searchable(),
                 // Tables\Columns\TextColumn::make('seoDescription')
                 //     ->searchable(),
-                // Tables\Columns\IconColumn::make('published')
-                //     ->boolean(),
+                Tables\Columns\IconColumn::make('published')
+                    ->boolean(),
                 // Tables\Columns\TextColumn::make('user_id')
                 //     ->numeric()
                 //     ->sortable(),
-                // Tables\Columns\TextColumn::make('price')
-                //     ->searchable(),
-                // Tables\Columns\TextColumn::make('salePrice')
-                //     ->searchable(),
+                Tables\Columns\TextColumn::make('price')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('salePrice')
+                    ->searchable(),
                 // Tables\Columns\IconColumn::make('free')
                 //     ->boolean(),
                 // Tables\Columns\TextColumn::make('time')
