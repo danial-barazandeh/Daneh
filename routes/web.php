@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Post;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
@@ -21,14 +22,15 @@ Route::get('/auth/redirect', function () {
 
 Route::get('/auth/callback', function () {
     $googleUser = Socialite::driver('google')->user();
- 
+
     $user = User::updateOrCreate([
-        'google_id' => $googleUser->id,
+        'email' => $googleUser->email,
     ], [
         'name' => $googleUser->name,
-        'email' => $googleUser->email,
+        'google_id' => $googleUser->id,
         'google_token' => $googleUser->token,
     ]);
+
  
     Auth::login($user);
  
@@ -37,7 +39,8 @@ Route::get('/auth/callback', function () {
 
 Route::get('/', function () {
     $posts = Post::with('image')->with('user')->get();
-    return view("home", compact('posts'));
+    $products = Product::with('image')->with('user')->get();
+    return view("home", compact('posts','products'));
 });
 
 Route::get('/dashboard', function () {
@@ -51,4 +54,8 @@ Route::get('/dashboard', function () {
 Route::get('/post/{id}', function (string $id) {
     $post = Post::find($id)->with('user')->first();
     return view("post", compact('post'));
+});
+Route::get('/product/{id}', function (string $id) {
+    $product = Product::find($id)->with('user')->first();
+    return view("product", compact('product'));
 });

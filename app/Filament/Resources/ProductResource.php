@@ -33,7 +33,7 @@ class ProductResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('seoDescription')
                     ->maxLength(255),
-                Forms\Components\TagsInput::make('seoKeys'),
+                // Forms\Components\TagsInput::make('seoKeys'),
                 Forms\Components\Toggle::make('published')
                     ->required(),
                 Forms\Components\Select::make('user_id')
@@ -59,33 +59,33 @@ class ProductResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('title')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('seoTitle')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('seoDescription')
-                    ->searchable(),
-                Tables\Columns\IconColumn::make('published')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('user_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('price')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('salePrice')
-                    ->searchable(),
-                Tables\Columns\IconColumn::make('free')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('time')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('introUrl')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                // Tables\Columns\TextColumn::make('seoTitle')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('seoDescription')
+                //     ->searchable(),
+                // Tables\Columns\IconColumn::make('published')
+                //     ->boolean(),
+                // Tables\Columns\TextColumn::make('user_id')
+                //     ->numeric()
+                //     ->sortable(),
+                // Tables\Columns\TextColumn::make('price')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('salePrice')
+                //     ->searchable(),
+                // Tables\Columns\IconColumn::make('free')
+                //     ->boolean(),
+                // Tables\Columns\TextColumn::make('time')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('introUrl')
+                //     ->searchable(),
+                // Tables\Columns\TextColumn::make('created_at')
+                //     ->dateTime()
+                //     ->sortable()
+                //     ->toggleable(isToggledHiddenByDefault: true),
+                // Tables\Columns\TextColumn::make('updated_at')
+                //     ->dateTime()
+                //     ->sortable()
+                //     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

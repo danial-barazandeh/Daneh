@@ -80,5 +80,5 @@
 
     <br></br>
 
-    <ProductsForHome></ProductsForHome>
+    @include('components.productsForHome')
 </div>
